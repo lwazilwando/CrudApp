@@ -1,0 +1,14 @@
+[
+    {
+        "id":1,
+        "name":"lwazi",
+        "lastName":"masinga",
+        "email":"lwando@gmil.com"
+    },
+    {
+        "id":2,
+        "name":"Vhutu",
+        "lastName":"smirt",
+        "email":"vhutu@gmil.com"
+    }
+]
