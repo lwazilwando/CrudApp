@@ -1,0 +1,73 @@
+/* .Container{
+    
+    flex-direction: column;
+    gap: 3px;
+    padding: 1rem;
+}
+table{
+    
+    width: 40%;
+}
+th,td{
+    border: 1px solid gray;
+    text-align: ;
+    padding: 8%;
+    font-size: 20px;
+}
+th{
+    background-color: rgb(100, 150, 200);
+}
+td{
+    background-color: rgb(205, 235,253);
+}
+form{
+    
+    gap: 5px;
+}
+form td:last-child{
+    
+    justify-content: space-evenly;
+}
+form *{
+    font-size: 28px;
+} */
+
+.Container{
+
+    background-color: transparent;
+    height: 100vh;
+    width: 100vw;
+
+}
+
+table{
+
+    background: pink;
+    float: right;
+    margin-right: 150px;
+    text-align: justify;
+}
+
+thead{
+background-color: aquamarine;
+
+}
+
+thead tr th{
+
+    height: 20px;
+    width: 5vw;
+    background-color: bisque;
+}
+fieldset{
+    margin: 2em 0;
+    padding: 1em 2em;
+    width: 40px;
+    background-color: chocolate;
+}
+legend{
+    
+}
+label{
+    text-transform: capitalize;
+}

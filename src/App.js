@@ -12,12 +12,12 @@ const App = () => {
   const [addFormData , setAddFormData] = useState({
     name:"",
     lastName:"",
-    email:""
+    email:"",
   });
   const [editFormData, setEditFormData] = useState({
     name:"",
     lastName:"",
-    email:""
+    email:"",
   })
 
   const [editContactId, setEditContactId] = useState(null);
@@ -34,7 +34,7 @@ const App = () => {
     setAddFormData(newFormData);
   };
 
-  const hamdleEditFormChange = (event) =>{
+  const handleEditFormChange = (event) =>{
     event.preventDefault();
 
     const fieldName = event.target.getAttribute('name');
@@ -45,7 +45,7 @@ const App = () => {
     
     setEditFormData(newFormData);
 
-  }
+  };
 
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
@@ -53,7 +53,7 @@ const App = () => {
       id:nanoid(),
       name: addFormData.name,
       lastName: addFormData.lastName,
-      email: addFormData.email
+      email: addFormData.email,
     };
 
     const newContacts = [...contacts, newContact];
@@ -66,18 +66,18 @@ const App = () => {
     event.preventDefault();
 
     const editedContact = {
-      id:  editedContact,
+      id: editContactId,
       name:editFormData.name,
     lastName:editFormData.lastName,
-    email:editFormData.email
-    }
+    email:editFormData.email,
+    };
 
-    const newContact = [...contacts];
+    const newContacts = [...contacts];
 
     const index = contacts.findIndex((contact)=> contact.id=== editContactId)
-    newContact[index] = editedContact;
+    newContacts[index] = editedContact;
 
-    setContacts(newContact);
+    setContacts(newContacts);
     setEditContactId(null)
   };
 
@@ -89,7 +89,7 @@ const App = () => {
     const formValues = {
       name:contact.name,
       lastName:contact.lastName,
-      email:contact.email
+      email:contact.email,
     };
     setEditFormData(formValues)
   };
@@ -107,8 +107,12 @@ const App = () => {
 
   };
   return (
-    <div>
+    
+    <div className='Container'>
+        <div className='Container1'>
        <form onSubmit={handleEditFormSubmit}>
+              
+                
               <table>
                 <thead>
                   <tr>
@@ -116,42 +120,48 @@ const App = () => {
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Action</th>
-                    <th></th>
                   </tr>
                 </thead>
             
               <tbody>
                 {contacts.map((contact) => (
                   <Fragment>
-                 
-                  
-                  
-
-                  {editContactId=== contact.id? ( <EditableRow editFormData={editFormData} hamdleEditFormChange={hamdleEditFormChange} />):
+          
+                  {editContactId=== contact.id? ( <EditableRow editFormData={editFormData}
+                   handleEditFormChange={handleEditFormChange}
+                    handleCancelClick={handleCancelClick}/>):
                   (<ReadOnlyRow contact = {contact}
                    handleEditClick={handleEditClick}
-                   handleCancelClick={handleCancelClick}
                    handleDeleteClick={handleDeleteClick}
                    />)}
-                 
-
-                  
+                   
                   </Fragment>
                  
                 ))}
-                
-
+            
               </tbody>
               </table>
+             
               </form>
+              </div>
 
-                <h1>Add New Employee</h1>
+                
+                
                 <form onSubmit={handleAddFormSubmit}>
-                  <input type="text" name="name" required="required" placeholder="Enter your name" onChange={handleAddFormChange}/>
-                  <input type="text" name="lastname" required="required" placeholder="Enter your last name" onChange={handleAddFormChange}/>
-                  <input type="text" name="email" required="required" placeholder="Enter your email" onChange={handleAddFormChange}/>
+                  <fieldset>
+                    <legend>Add New Employee</legend>
+                
+                  <label>Name</label><br/><br/>
+                  <input type="text" name="name" required="required" placeholder="Enter your name" onChange={handleAddFormChange}/><br/><br/>
+                  <label>Last Name</label><br/><br/>
+                  <input type="text" name="lastName" required="required" placeholder="Enter your last name" onChange={handleAddFormChange}/><br/><br/>
+                  <label>Email</label><br/><br/>
+                  <input type="email" name="email" required="required" placeholder="Enter your email" onChange={handleAddFormChange}/><br/><br/>
                   <button type='submit'>Add Employee</button>
+
+                  </fieldset>
                 </form>
+                
               
       
     </div>
